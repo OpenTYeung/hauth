@@ -1,4 +1,4 @@
-[Asofdate Project Release](https://github.com/hzwy23/asofdate/releases)
+[Asofdate Hauth Project Release](https://github.com/hzwy23/asofdate/releases)
 
 #### golang版本建议:
 ```
@@ -6,18 +6,18 @@ go sdk >= 1.8
 ```
 
 **Java版本地址**
-[https://github.com/hzwy23/asofdate-etl](https://github.com/hzwy23/asofdate-etl)
+[hauth-java](https://github.com/asofdate/hauth-java)
 
 ## 获取项目源代码方法. **请确保设置了GOPATH环境变量**
 ```golang
-go get github.com/hzwy23/asofdate
+go get github.com/asofdate/hauth
 #上边命令,将会在GOPATH/bin目录中生成asofate可执行文件,由于系统运行需要配置文件和静态页面
-#所系请将GOPATH/bin的asofdate可执行文件,复制到$GOPATH/src/github.com/hzwy23/asofdate目录中
+#所系请将GOPATH/bin的hauth可执行文件,复制到$GOPATH/src/github.com/asofdate/hauth目录中
 #或者使用项目中提供的build.sh脚本编译,再次生成可执行文件.
 #请按照下边的操作,导入数据库.
 ```
 
-## asofdate项目简介
+## asofdate hauth项目简介
 每一个项目,都有截止日期,为了实现快速开发目标,我们以beego为基础，开发出了一款快速开发平台。这个平台内部集成了菜单管理、用户管理、角色管理、授权管理、日志管理、机构管理、路由管理、域定义管理等等。在这个平台的基础上，可以快速的开发自己的应用,以响应瞬息万变的市场需求。
 
 ## 项目目标
@@ -49,9 +49,9 @@ go get github.com/hzwy23/asofdate
 ```shell
 mysql -uroot -p 数据库名 < ./init_hauth.sql
 ```
-提示：init_hauth.sql在src/github.com/hzwy23/hauth/script目录中
+提示：init_hauth.sql在src/github.com/osofdate/hauth/core/script目录中
 
-**2. 编译asofdate代码，生成可执行文件**
+**2. 编译hauth代码，生成可执行文件**
 
 
 **A. 直接以安装包的方式编译**
@@ -59,9 +59,9 @@ mysql -uroot -p 数据库名 < ./init_hauth.sql
 执行下边命令，在执行命令前，请确保您已经安装了go sdk
 
 ```shell
-## cd 到asofdate的解压目录，然后执行下边命令
+## cd 到hauth的解压目录，然后执行下边命令
 ./build.sh
-## 上边这种模式编译会生成一个可执行文件asofdate，
+## 上边这种模式编译会生成一个可执行文件hauth，
 ```
 这个命令将会在hauth的解压目录下生成hauth可执行文件。
 
@@ -69,8 +69,8 @@ mysql -uroot -p 数据库名 < ./init_hauth.sql
 
 main.go文件在hauth解压的根目录中，编译方法如下：
 ```
-# cd 到asofdate解压后的根目录
-go get github.com/hzwy23/asofdate
+# cd 到hauth解压后的根目录
+go get github.com/asofdate/hauth
 go build -i main.go
 ```
 
@@ -100,13 +100,13 @@ DB.passwd="xzPEh+SfFL3aimN0zGNB9w=="
 ## 启动方法
 ```shell
 ## linux上，请执行。此外需要注意的是：linux上开启1024以下端口号需要管理员权限。
-nohup ./asofdate &
+nohup ./hauth &
 
 ## Mac上，
-sudo ./asofdate
+sudo ./hauth
 
 ## windows上，
-## 请直接双击asofdate.exe可执行文件
+## 请直接双击hauth.exe可执行文件
 ```
 
 打开浏览器,访问:https://localhost:8090
