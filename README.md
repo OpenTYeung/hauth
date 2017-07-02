@@ -116,7 +116,7 @@ sudo ./hauth
 管理员用户: admin, 密码: hzwy23
 
 
-![系统管理界面](./system_manage.png)
+![系统管理界面](./doc/system_manage.png)
 
 ## 交流方式
 
