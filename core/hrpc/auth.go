@@ -19,17 +19,17 @@ func BasicAuth(r *http.Request) bool {
 		logs.Error(err)
 		return false
 	}
-	if jclaim.User_id == "admin" {
+	if jclaim.UserId == "admin" {
 		return true
 	}
 	cnt := 0
-	err = dbobj.QueryRow(sys_rdbms_hrpc_006, jclaim.User_id, r.URL.Path).Scan(&cnt)
+	err = dbobj.QueryRow(sys_rdbms_hrpc_006, jclaim.UserId, r.URL.Path).Scan(&cnt)
 	if err != nil {
 		logs.Error(err)
 		return false
 	}
 	if cnt == 0 {
-		logs.Error("insufficient privileges", "user id is :", jclaim.User_id, "api is :", r.URL.Path)
+		logs.Error("insufficient privileges", "user id is :", jclaim.UserId, "api is :", r.URL.Path)
 		return false
 	}
 	return true

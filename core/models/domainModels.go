@@ -5,18 +5,18 @@ import (
 	"errors"
 	"net/url"
 
-	"github.com/hzwy23/dbobj"
 	"github.com/asofdate/hauth/utils/logs"
 	"github.com/asofdate/hauth/utils/validator"
+	"github.com/hzwy23/dbobj"
 )
 
 type DomainMmodel struct {
 	Project_id            string `json:"domain_id"`
 	Project_name          string `json:"domain_desc"`
 	Project_status        string `json:"domain_status"`
-	Maintance_date        string `json:"maintance_date"`
+	Maintance_date        string `json:"maintance_date" dateType:"YYYY-MM-DD HH24:MM:SS"`
 	User_id               string `json:"create_user_id"`
-	Domain_maintance_date string `json:"domain_modify_date"`
+	Domain_maintance_date string `json:"domain_modify_date" dateType:"YYYY-MM-DD HH24:MM:SS"`
 	Domain_maintance_user string `json:"domain_modify_user"`
 	Domain_status_cd      string `json:"domain_status_cd"`
 }

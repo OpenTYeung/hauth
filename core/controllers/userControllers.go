@@ -98,7 +98,7 @@ func (this userController) Get(ctx *context.Context) {
 			hret.Error(ctx.ResponseWriter, 403, i18n.Disconnect(ctx.Request))
 			return
 		}
-		domain_id = jclaim.Domain_id
+		domain_id = jclaim.DomainId
 	}
 
 	if !hrpc.DomainAuth(ctx.Request, domain_id, "r") {
@@ -160,7 +160,7 @@ func (this userController) Post(ctx *context.Context) {
 		return
 	}
 
-	msg, err := this.models.Post(form, jclaim.User_id)
+	msg, err := this.models.Post(form, jclaim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 419, i18n.Get(ctx.Request, msg), err)
@@ -222,7 +222,7 @@ func (this userController) Delete(ctx *context.Context) {
 			hret.Error(ctx.ResponseWriter, 403, i18n.Get(ctx.Request, "error_user_forbid_delete_admin"))
 			return
 		}
-		if val.User_id == jclaim.User_id {
+		if val.User_id == jclaim.UserId {
 			hret.Error(ctx.ResponseWriter, 403, i18n.Get(ctx.Request, "error_user_forbid_yourself"))
 			return
 		}
@@ -288,7 +288,7 @@ func (this userController) Search(ctx *context.Context) {
 			hret.Error(ctx.ResponseWriter, 403, i18n.Disconnect(ctx.Request))
 			return
 		}
-		domain_id = jclaim.Domain_id
+		domain_id = jclaim.DomainId
 	}
 	logs.Debug(org_id, status_id)
 	rst, err := this.models.Search(org_id, status_id, domain_id)
@@ -350,7 +350,7 @@ func (this userController) Put(ctx *context.Context) {
 		hret.Error(ctx.ResponseWriter, 403, i18n.Disconnect(ctx.Request))
 		return
 	}
-	msg, err := this.models.Put(form, jclaim.User_id)
+	msg, err := this.models.Put(form, jclaim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, msg), err)
@@ -460,7 +460,7 @@ func (this userController) ModifyStatus(ctx *context.Context) {
 		return
 	}
 
-	if jclaim.User_id == user_id {
+	if jclaim.UserId == user_id {
 		hret.Error(ctx.ResponseWriter, 403, i18n.Get(ctx.Request, "error_user_modify_yourself"))
 		return
 	}
@@ -511,7 +511,7 @@ func (this userController) GetUserDetails(ctx *context.Context) {
 		hret.Error(ctx.ResponseWriter, 401, i18n.Disconnect(ctx.Request))
 		return
 	}
-	rst, err := this.models.GetOwnerDetails(jclaim.User_id)
+	rst, err := this.models.GetOwnerDetails(jclaim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 419, i18n.Get(ctx.Request, "error_user_query"))

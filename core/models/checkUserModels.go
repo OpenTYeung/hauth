@@ -100,11 +100,11 @@ func BasicAuth(ctx *context.Context) bool {
 		hret.Error(ctx.ResponseWriter, 403, i18n.Get(ctx.Request, "as_of_date_no_auth"))
 		return false
 	}
-	if jclaim.User_id == "admin" {
+	if jclaim.UserId == "admin" {
 		return true
 	}
 	cnt := 0
-	err = dbobj.QueryRow(sys_rdbms_022, jclaim.User_id, ctx.Request.URL.Path).Scan(&cnt)
+	err = dbobj.QueryRow(sys_rdbms_022, jclaim.UserId, ctx.Request.URL.Path).Scan(&cnt)
 	if err != nil {
 		hret.Error(ctx.ResponseWriter, 403, i18n.Get(ctx.Request, "as_of_date_no_auth"))
 		return false
@@ -130,8 +130,8 @@ func DomainAuth(ctx *context.Context, domain_id string) int {
 
 	// if the user is not admin, and user_id is not owner this domain_id
 	// check share info. or not
-	if jclaim.User_id != "admin" && jclaim.Domain_id != domain_id {
-		level = CheckDomainRights(jclaim.User_id, domain_id)
+	if jclaim.UserId != "admin" && jclaim.DomainId != domain_id {
+		level = CheckDomainRights(jclaim.UserId, domain_id)
 		return level
 	} else {
 		return 2

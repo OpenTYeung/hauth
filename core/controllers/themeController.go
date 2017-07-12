@@ -58,7 +58,7 @@ func (this *themeController) Post(ctx *context.Context) {
 
 	// 提交更新数据库请求.
 	// 更新当前连接用户的主题信息
-	err = this.muser.Put(jclaim.User_id, theme_id)
+	err = this.muser.Put(jclaim.UserId, theme_id)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "error_theme_update"), err)

@@ -99,7 +99,7 @@ func (this roleController) Get(ctx *context.Context) {
 			hret.Error(ctx.ResponseWriter, 403, i18n.Disconnect(ctx.Request))
 			return
 		}
-		domain_id = jclaim.Domain_id
+		domain_id = jclaim.DomainId
 	}
 
 	if !hrpc.DomainAuth(ctx.Request, domain_id, "r") {
@@ -162,7 +162,7 @@ func (this roleController) Post(ctx *context.Context) {
 		return
 	}
 
-	msg, err := this.models.Post(form, jclaim.User_id)
+	msg, err := this.models.Post(form, jclaim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, msg), err)
@@ -275,7 +275,7 @@ func (this roleController) Update(ctx *context.Context) {
 		return
 	}
 
-	msg, err := this.models.Update(form, jclaim.User_id)
+	msg, err := this.models.Update(form, jclaim.UserId)
 	if err != nil {
 		logs.Error(err.Error())
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, msg), err)

@@ -191,7 +191,7 @@ func (this userRolesController) Auth(ctx *context.Context) {
 		return
 	}
 
-	msg, err := this.models.Auth(rst, jclaim.User_id)
+	msg, err := this.models.Auth(rst, jclaim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 419, i18n.Get(ctx.Request, msg), err)

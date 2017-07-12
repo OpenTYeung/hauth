@@ -97,7 +97,7 @@ func (this orgController) Get(ctx *context.Context) {
 			hret.Error(ctx.ResponseWriter, 403, i18n.Disconnect(ctx.Request))
 			return
 		}
-		domain_id = jclaim.Domain_id
+		domain_id = jclaim.DomainId
 	}
 
 	if !hrpc.DomainAuth(ctx.Request, domain_id, "r") {
@@ -166,7 +166,7 @@ func (this orgController) Delete(ctx *context.Context) {
 			hret.Error(ctx.ResponseWriter, 403, i18n.Disconnect(ctx.Request))
 			return
 		}
-		domain_id = jclaim.Domain_id
+		domain_id = jclaim.DomainId
 	}
 
 	if !hrpc.DomainAuth(ctx.Request, domain_id, "w") {
@@ -236,7 +236,7 @@ func (this orgController) Update(ctx *context.Context) {
 		return
 	}
 
-	msg, err := this.models.Update(form, jclaim.User_id)
+	msg, err := this.models.Update(form, jclaim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, msg), err)
@@ -301,13 +301,13 @@ func (this orgController) Post(ctx *context.Context) {
 		return
 	}
 
-	domain_id := form.Get("Domain_id")
+	domain_id := form.Get("DomainId")
 	if !hrpc.DomainAuth(ctx.Request, domain_id, "w") {
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "as_of_date_domain_permission_denied_modify"))
 		return
 	}
 
-	msg, err := this.models.Post(form, jclaim.User_id)
+	msg, err := this.models.Post(form, jclaim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, msg), err)
@@ -405,7 +405,7 @@ func (this orgController) Download(ctx *context.Context) {
 			hret.Error(ctx.ResponseWriter, 403, i18n.Disconnect(ctx.Request))
 			return
 		}
-		domain_id = jclaim.Domain_id
+		domain_id = jclaim.DomainId
 	}
 
 	if !hrpc.DomainAuth(ctx.Request, domain_id, "r") {
@@ -579,7 +579,7 @@ func (this orgController) Upload(ctx *context.Context) {
 			one.Domain_id = val.Cells[3].Value
 			one.Org_unit_id = utils.JoinCode(one.Domain_id, one.Code_number)
 			one.Up_org_id = utils.JoinCode(one.Domain_id, val.Cells[2].Value)
-			one.Create_user = jclaim.User_id
+			one.Create_user = jclaim.UserId
 
 			if one.Org_unit_id == one.Up_org_id {
 				hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "as_of_date_up_org_equal_org_id"))

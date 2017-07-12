@@ -49,8 +49,8 @@ func WriteHandleLogs(ctx *context.Context) {
 			one.User_id = one.Client_ip
 			one.Domain_id = one.Client_ip
 		} else {
-			one.User_id = jclaim.User_id
-			one.Domain_id = jclaim.Domain_id
+			one.User_id = jclaim.UserId
+			one.Domain_id = jclaim.DomainId
 		}
 		logs.Infow("http request:", "user_id", one.User_id, "client_up", one.Client_ip, "ret_status", one.Ret_status, "req_method", one.Req_method, "req_url", one.Req_url, "domain_id", one.Domain_id, "req_body", one.Req_body)
 		log_buf <- one

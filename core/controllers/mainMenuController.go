@@ -56,14 +56,14 @@ func SubSystemEntry(ctx *context.Context) {
 	}
 
 	// get url of the id number.
-	url, err := homePageMenusModel.GetUrl(jclaim.User_id, id)
+	url, err := homePageMenusModel.GetUrl(jclaim.UserId, id)
 	if err != nil {
 		logs.Error(err)
 		ctx.WriteString(url)
 		return
 	}
 
-	key := sha1.GenSha1Key(id, jclaim.User_id, url)
+	key := sha1.GenSha1Key(id, jclaim.UserId, url)
 
 	if !groupcache.FileIsExist(key) {
 		groupcache.RegisterStaticFile(key, url)
@@ -125,7 +125,7 @@ func HomePageMenus(ctx *context.Context) {
 		return
 	}
 
-	ojs, err := homePageMenusModel.Get(Id, typeId, claim.User_id)
+	ojs, err := homePageMenusModel.Get(Id, typeId, claim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "error_query_menu"))

@@ -132,7 +132,7 @@ func (this DomainShareController) Get(ctx *context.Context) {
 			hret.Error(ctx.ResponseWriter, 403, i18n.Disconnect(ctx.Request))
 			return
 		}
-		domain_id = jclaim.Domain_id
+		domain_id = jclaim.DomainId
 	}
 
 	if !hrpc.DomainAuth(ctx.Request, domain_id, "r") {
@@ -248,7 +248,7 @@ func (this DomainShareController) Post(ctx *context.Context) {
 		return
 	}
 
-	msg, err := this.models.Post(form, jclaim.User_id)
+	msg, err := this.models.Post(form, jclaim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 419, i18n.Get(ctx.Request, msg))
@@ -377,7 +377,7 @@ func (this DomainShareController) Put(ctx *context.Context) {
 		return
 	}
 
-	msg, err := this.models.Update(form, jclaim.User_id)
+	msg, err := this.models.Update(form, jclaim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 419, i18n.Get(ctx.Request, msg), err)
@@ -417,7 +417,7 @@ func (this *DomainShareController) GetAccessDomain(ctx *context.Context) {
 		return
 	}
 
-	rst, err := this.models.GetList(jclaim.Domain_id)
+	rst, err := this.models.GetList(jclaim.DomainId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "as_of_date_domain_getowner"))
@@ -453,7 +453,7 @@ func (this *DomainShareController) GetDomainOwner(ctx *context.Context) {
 		return
 	}
 
-	rst, err := this.models.GetOwner(jclaim.Domain_id)
+	rst, err := this.models.GetOwner(jclaim.DomainId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "as_of_date_domains_of_user"))

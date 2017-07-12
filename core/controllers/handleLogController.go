@@ -91,7 +91,7 @@ func (this handleLogsController) Download(ctx *context.Context) {
 		hret.Error(ctx.ResponseWriter, 403, i18n.Disconnect(ctx.Request))
 		return
 	}
-	rst, err := this.model.Download(jclaim.Domain_id)
+	rst, err := this.model.Download(jclaim.DomainId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "error_handle_logs_get_failed"))
@@ -205,7 +205,7 @@ func (this handleLogsController) GetHandleLogs(ctx *context.Context) {
 		return
 	}
 
-	rst, total, err := this.model.Get(jclaim.Domain_id, offset, limit)
+	rst, total, err := this.model.Get(jclaim.DomainId, offset, limit)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "error_handle_logs_query_failed"))
@@ -282,7 +282,7 @@ func (this handleLogsController) SerachLogs(ctx *context.Context) {
 		return
 	}
 
-	rst, err := this.model.Search(jclaim.Domain_id, userid, start, end)
+	rst, err := this.model.Search(jclaim.DomainId, userid, start, end)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "error_handle_logs_query_failed"))

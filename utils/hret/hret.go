@@ -2,7 +2,6 @@ package hret
 
 import (
 	"encoding/json"
-
 	"net/http"
 	"strconv"
 

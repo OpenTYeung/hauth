@@ -103,7 +103,7 @@ func (this passwdController) PostModifyPasswd(ctx *context.Context) {
 		return
 	}
 
-	err_msg, err := this.p.UpdateMyPasswd(newPd, jclaim.User_id, oriEn)
+	err_msg, err := this.p.UpdateMyPasswd(newPd, jclaim.UserId, oriEn)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, err_msg), err)

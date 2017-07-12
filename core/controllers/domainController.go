@@ -153,7 +153,7 @@ func (this *domainController) Post(ctx *context.Context) {
 
 	// submit new domain info to user model
 	// If success, will return nil, or not.
-	msg, err := this.models.Post(form, jclaim.User_id, jclaim.Domain_id)
+	msg, err := this.models.Post(form, jclaim.UserId, jclaim.DomainId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, msg), err)
@@ -219,7 +219,7 @@ func (this *domainController) Delete(ctx *context.Context) {
 
 	// 授权校验
 	for _, val := range js {
-		if val.Project_id == jclaim.Domain_id {
+		if val.Project_id == jclaim.DomainId {
 			hret.Error(ctx.ResponseWriter, 403, i18n.Get(ctx.Request, "error_forbid_delete_your_domain"))
 			return
 		}
@@ -300,7 +300,7 @@ func (this *domainController) Put(ctx *context.Context) {
 		return
 	}
 
-	msg, err := this.models.Update(form, jclaim.User_id)
+	msg, err := this.models.Update(form, jclaim.UserId)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, msg), err)
@@ -375,7 +375,7 @@ func (this *domainController) GetId(ctx *context.Context) {
 		return
 	}
 
-	hret.Json(ctx.ResponseWriter, jclaim.Domain_id)
+	hret.Json(ctx.ResponseWriter, jclaim.DomainId)
 }
 
 func init() {

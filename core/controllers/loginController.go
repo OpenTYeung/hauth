@@ -45,14 +45,14 @@ func HomePage(ctx *context.Context) {
 		return
 	}
 
-	url := indexModels.GetDefaultPage(jclaim.User_id)
+	url := indexModels.GetDefaultPage(jclaim.UserId)
 	h, err := template.ParseFiles(url)
 	if err != nil {
 		logs.Error(err)
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "error_get_login_page"), err)
 		return
 	}
-	h.Execute(ctx.ResponseWriter, jclaim.User_id)
+	h.Execute(ctx.ResponseWriter, jclaim.UserId)
 }
 
 // swagger:operation POST /login LoginSystem LoginSystem

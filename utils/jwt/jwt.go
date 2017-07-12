@@ -5,15 +5,16 @@ import (
 	"fmt"
 	"time"
 
-	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/asofdate/hauth/utils/logs"
+	jwt "github.com/dgrijalva/jwt-go"
 )
 
 type JwtClaims struct {
 	*jwt.StandardClaims
-	User_id   string
-	Domain_id string
-	Org_id    string
+	UserId      string
+	DomainId    string
+	OrgUnitId   string
+	Authorities string `json:"authorities"`
 }
 
 var (
@@ -21,16 +22,16 @@ var (
 )
 
 func GenToken(user_id, domain_id, org_id string, dt int64) string {
-
+	fmt.Println(time.Now().Unix())
 	claims := JwtClaims{
 		&jwt.StandardClaims{
-			NotBefore: time.Now().Unix(),
 			ExpiresAt: time.Now().Unix() + dt,
 			Issuer:    "hzwy23",
 		},
 		user_id,
 		domain_id,
 		org_id,
+		"ROLE_ADMIN,AUTH_WRITE,ACTUATOR",
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
@@ -46,13 +47,13 @@ func DestoryToken() string {
 
 	claims := JwtClaims{
 		&jwt.StandardClaims{
-			NotBefore: int64(time.Now().Unix() - 99998),
 			ExpiresAt: int64(time.Now().Unix() - 99999),
 			Issuer:    "hzwy23",
 		},
 		"exit",
 		"exit",
 		"exit",
+		"ROLE_ADMIN,AUTH_WRITE,ACTUATOR",
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
@@ -81,7 +82,7 @@ func ParseJwt(token string) (*JwtClaims, error) {
 		return key, nil
 	})
 	if err != nil {
-		fmt.Println("parase with claims failed.", err)
+		fmt.Println("parase with claims failed.", err, token)
 		return nil, errors.New("parase with claims failed.")
 	}
 	return jclaim, nil

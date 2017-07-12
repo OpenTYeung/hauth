@@ -1,9 +1,9 @@
 package models
 
 import (
-	"github.com/hzwy23/dbobj"
 	"github.com/asofdate/hauth/utils/logs"
 	"github.com/asofdate/hauth/utils/validator"
+	"github.com/hzwy23/dbobj"
 )
 
 type HandleLogMode struct {
@@ -12,7 +12,7 @@ type HandleLogMode struct {
 type handleLogs struct {
 	Uuid        string `json:"uuid"`
 	User_id     string `json:"user_id"`
-	Handle_time string `json:"handle_time"`
+	Handle_time string `json:"handle_time" dateType:"YYYY-MM-DD HH24:MM:SS"`
 	Client_ip   string `json:"client_ip"`
 	Status_code string `json:"status_code"`
 	Method      string `json:"method"`

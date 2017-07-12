@@ -71,7 +71,6 @@ func (m *SigningMethodHMAC) Verify(signingString, signature string, key interfac
 	if !hmac.Equal(sig, hasher.Sum(nil)) {
 		return ErrSignatureInvalid
 	}
-
 	// No validation errors.  Signature is good.
 	return nil
 }

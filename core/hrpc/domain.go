@@ -43,8 +43,8 @@ func checkDomainAuthLevel(req *http.Request, domain_id string) int {
 
 	// if the user is not admin, and user_id is not owner this domain_id
 	// check share info. or not
-	if jclaim.User_id != "admin" && jclaim.Domain_id != domain_id {
-		level = GetAuthLevel(jclaim.User_id, domain_id)
+	if jclaim.UserId != "admin" && jclaim.DomainId != domain_id {
+		level = GetAuthLevel(jclaim.UserId, domain_id)
 		return level
 	} else {
 		return 2
