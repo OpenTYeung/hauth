@@ -32,7 +32,6 @@
 	<script type="text/javascript" src="/static/jquery-i18n-properties/jquery.i18n.properties.min.js"></script>
 	<script type="text/javascript" src="/static/js/utils.min.js"></script>
 
-
 	<!--bootstrap-table表格-->
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="/static/bootstrap-table/dist/bootstrap-table.min.css">
@@ -40,7 +39,6 @@
 	<script src="/static/bootstrap-table/dist/bootstrap-table.min.js"></script>
 	<!-- Latest compiled and minified Locales -->
 	<script src="/static/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
-
 
 	<!--bootstrap switch-->
 	<link rel="stylesheet" href="/static/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.min.css"/>

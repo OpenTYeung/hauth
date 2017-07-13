@@ -1,12 +1,15 @@
 package main
 
 import (
-	"github.com/astaxie/beego"
-	//_ "github.com/hzwy23/asofdate/apps"
+	//"github.com/asofdate/apps/mas/ca"
+	//"github.com/asofdate/apps/mas/common"
+	//"github.com/asofdate/apps/mas/ftp"
 	"github.com/asofdate/hauth/core/service"
 )
 
 func main() {
-	service.StartHauth()
-	beego.Run()
+	//service.AppRegister("ca", ca.Register)
+	//service.AppRegister("ftp", ftp.Register)
+	//service.AppRegister("common", common.Register)
+	service.Bootstrap()
 }
