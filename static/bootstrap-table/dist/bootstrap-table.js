@@ -1392,7 +1392,7 @@
                     } else {
                         active = page === that.options.pageSize ? ' class="active"' : '';
                     }
-                    pageNumber.push(sprintf('<li role="menuitem"%s><span href="#">%s</span></li>', active, page));
+                    pageNumber.push(sprintf('<li role="menuitem"%s><a href="#">%s</a></li>', active, page));
                 }
             });
             pageNumber.push('</ul></span>');
@@ -1403,7 +1403,7 @@
             html.push('</div>',
                 '<div class="pull-' + this.options.paginationHAlign + ' pagination">',
                 '<ul class="pagination' + sprintf(' pagination-%s', this.options.iconSize) + '">',
-                '<li class="page-pre"><span href="#">' + this.options.paginationPreText + '</span></li>');
+                '<li class="page-pre"><a href="#">' + this.options.paginationPreText + '</a></li>');
 
             if (this.totalPages < 5) {
                 from = 1;
@@ -1424,7 +1424,7 @@
             if (this.totalPages >= 6) {
                 if (this.options.pageNumber >= 3) {
                     html.push('<li class="page-first' + (1 === this.options.pageNumber ? ' active' : '') + '">',
-                        '<span href="#">', 1, '</span>',
+                        '<a href="#">', 1, '</a>',
                         '</li>');
 
                     from++;
@@ -1435,7 +1435,7 @@
                         from--;
                     } else {
                         html.push('<li class="page-first-separator disabled">',
-                            '<span href="#">...</span>',
+                            '<a href="#">...</a>',
                             '</li>');
                     }
 
@@ -1468,7 +1468,7 @@
             if (this.totalPages >= 8) {
                 if (this.options.pageNumber <= (this.totalPages - 4)) {
                     html.push('<li class="page-last-separator disabled">',
-                        '<span href="#">...</span>',
+                        '<a href="#">...</a>',
                         '</li>');
                 }
             }
@@ -1476,13 +1476,13 @@
             if (this.totalPages >= 6) {
                 if (this.options.pageNumber <= (this.totalPages - 3)) {
                     html.push('<li class="page-last' + (this.totalPages === this.options.pageNumber ? ' active' : '') + '">',
-                        '<span href="#">', this.totalPages, '</span>',
+                        '<a href="#">', this.totalPages, '</a>',
                         '</li>');
                 }
             }
 
             html.push(
-                '<li class="page-next"><span href="#">' + this.options.paginationNextText + '</span></li>',
+                '<li class="page-next"><a href="#">' + this.options.paginationNextText + '</a></li>',
                 '</ul>',
                 '</div>');
         }
