@@ -6,7 +6,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/astaxie/beego/context"
 	"github.com/asofdate/hauth/core/groupcache"
 	"github.com/asofdate/hauth/core/hrpc"
 	"github.com/asofdate/hauth/core/models"
@@ -16,6 +15,7 @@ import (
 	"github.com/asofdate/hauth/utils/jwt"
 	"github.com/asofdate/hauth/utils/logs"
 	"github.com/asofdate/hauth/utils/validator"
+	"github.com/astaxie/beego/context"
 	"github.com/tealeg/xlsx"
 )
 
@@ -301,7 +301,7 @@ func (this orgController) Post(ctx *context.Context) {
 		return
 	}
 
-	domain_id := form.Get("DomainId")
+	domain_id := form.Get("Domain_id")
 	if !hrpc.DomainAuth(ctx.Request, domain_id, "w") {
 		hret.Error(ctx.ResponseWriter, 421, i18n.Get(ctx.Request, "as_of_date_domain_permission_denied_modify"))
 		return
